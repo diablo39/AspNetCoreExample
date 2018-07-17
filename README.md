@@ -8,3 +8,9 @@ Sample project
 	* https://www.microsoft.com/net/download
 
 # Build Application
+
+From command line execute `dotnet build`
+
+# Run application
+
+From command line execute `dotnet run`
