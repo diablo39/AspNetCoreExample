@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
@@ -19,13 +20,8 @@ namespace AspNetCoreExample
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                .AddCommandLine(args)
-                .Build();
-
             var result = WebHost.CreateDefaultBuilder(args)
-                  .UseConfiguration(config)
-                  .UseStartup<Startup>();
+                  .UseStartup(Assembly.GetEntryAssembly().FullName);
 
             return result;
         }

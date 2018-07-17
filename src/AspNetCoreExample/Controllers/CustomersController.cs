@@ -2,24 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCoreExample.Model;
+using AspNetCoreExample.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreExample.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    public class ValuesController : ControllerBase
+    public class CustomersController : ControllerBase
     {
+        private CustomerService _service;
+
+        public CustomersController(CustomerService service)
+        {
+            _service = service;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public IEnumerable<Customer> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _service.GetCustomers();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        public string Get(int id)
         {
             return "value";
         }
