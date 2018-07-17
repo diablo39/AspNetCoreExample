@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace AspNetCoreExample
 {
@@ -25,6 +26,12 @@ namespace AspNetCoreExample
         {
             services.AddMvc();
             services.AddScoped<ICustomerService, CustomerServiceStub>();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +44,22 @@ namespace AspNetCoreExample
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+            app.UseSwagger();
+
+            app.UseReDoc(c =>
+            {
+                c.RoutePrefix = "api-docs";
+
+                c.SpecUrl = "/swagger/v1/swagger.json";
+
+            });
+
             app.UseMvc();
+            
         }
     }
 }
