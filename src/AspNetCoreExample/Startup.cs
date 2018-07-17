@@ -27,7 +27,7 @@ namespace AspNetCoreExample
         public virtual void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddScoped<CustomerService>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace AspNetCoreExample.Services
 {
-    public class CustomerServiceStub
+    public class CustomerServiceStub: ICustomerService
     {
+        private static List<Customer> _customers = new List<Customer> {
+                new Customer{ FirstName = "Stub", LastName="Kowalski"},
+                new Customer{ FirstName = "Stub", LastName="Pawlak"},
+                new Customer{ FirstName = "Stub", LastName="Nowak"},
+                new Customer{ FirstName = "Stub", LastName="Malinowski"}
+            };
+
         public IList<Customer> GetCustomers()
         {
-            return new Customer[0];    
+            // TODO: very complex logic that fetch data from database
+            return _customers;
         }
     }
 }

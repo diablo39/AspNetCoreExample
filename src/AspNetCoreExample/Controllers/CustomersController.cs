@@ -9,11 +9,12 @@ using Microsoft.AspNetCore.Mvc;
 namespace AspNetCoreExample.Controllers
 {
     [Route("api/[controller]")]
+    //[ApiController]
     public class CustomersController : ControllerBase
     {
-        private CustomerService _service;
+        private ICustomerService _service;
 
-        public CustomersController(CustomerService service)
+        public CustomersController(ICustomerService service)
         {
             _service = service;
         }
@@ -30,24 +31,6 @@ namespace AspNetCoreExample.Controllers
         public string Get(int id)
         {
             return "value";
-        }
-
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
         }
     }
 }
