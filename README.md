@@ -14,3 +14,12 @@ From command line execute `dotnet build`
 # Run application
 
 From command line execute `dotnet run`
+
+# Docker
+
+## Docker build
+`docker build -f src/AspNetCoreExample/Dockerfile .`
+
+## Docker run
+
+`docker run -e "ASPNETCORE_ENVIRONMENT=ContractTests" <name of container>`
