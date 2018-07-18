@@ -24,8 +24,8 @@ From command line execute `dotnet run`
 
 ## Docker run - Production environment
 
-`docker run <name of container>`
+`docker run -p 80:80 <name of container>`
 
 ## Docker run - ContractTests environment
 
-`docker run -e "ASPNETCORE_ENVIRONMENT=ContractTests" <name of container>`
+`docker run -e "ASPNETCORE_ENVIRONMENT=ContractTests" -p 80:80 <name of container>`
