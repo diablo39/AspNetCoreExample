@@ -22,6 +22,10 @@ From command line execute `dotnet run`
 ## Docker build
 `docker build -f src/AspNetCoreExample/Dockerfile .`
 
-## Docker run
+## Docker run - Production environment
+
+`docker run <name of container>`
+
+## Docker run - ContractTests environment
 
 `docker run -e "ASPNETCORE_ENVIRONMENT=ContractTests" <name of container>`
