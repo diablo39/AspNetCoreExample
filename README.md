@@ -29,3 +29,8 @@ From command line execute `dotnet run`
 ## Docker run - ContractTests environment
 
 `docker run -e "ASPNETCORE_ENVIRONMENT=ContractTests" -p 80:80 <name of container>`
+
+# Swagger
+
+http://localhost/swagger - swagger ui
+http://localhost/api-docs - redoc

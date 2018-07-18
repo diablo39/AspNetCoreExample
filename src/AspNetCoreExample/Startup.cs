@@ -44,6 +44,20 @@ namespace AspNetCoreExample
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+            });
+            app.UseSwagger();
+
+            app.UseReDoc(c =>
+            {
+                c.RoutePrefix = "api-docs";
+
+                c.SpecUrl = "/swagger/v1/swagger.json";
+
+            });
+
             app.UseMvc();
         }
     }
