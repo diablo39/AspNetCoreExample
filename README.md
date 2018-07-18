@@ -2,16 +2,18 @@
 
 Sample project
 
-# Pre-requisites
+# local
+
+## Pre-requisites
 
 * Installed .NET Core SDK 2.1
 	* https://www.microsoft.com/net/download
 
-# Build Application
+## Build Application
 
 From command line execute `dotnet build`
 
-# Run application
+## Run application
 
 From command line execute `dotnet run`
 
