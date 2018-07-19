@@ -1,0 +1,24 @@
+description: |
+  Should return a list of customers
+request:
+  method: GET
+  url: /api/Customers
+  headers:
+    Content-Type: application/json
+response:
+  status: 200
+  headers:
+    Content-Type: application/json
+  body: '[{
+    "FirstName" : "Jan",
+    "LastName" : "Kowalski"
+  },{
+    "FirstName" : "Zbigniew",
+    "LastName" : "Kowalski"
+  },{
+    "FirstName" : "Jan",
+    "LastName" : "Nowak"
+  },{
+    "FirstName" : "Grażyna",
+    "LastName" : "Nowak"
+  }]'
