@@ -24,16 +24,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "ContractTests"
       },
-      "applicationUrl": "http://localhost:5000"
-    },
-    "appName": {
-      "commandName": "Executable",
-      "commandLineArgs": "--appName",
-      "launchUrl": "api/customers",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "ContractTests"
-      },
-      "applicationUrl": "http://localhost:5000"
+      "applicationUrl": "http://+:5000"
     }
   }
 }
