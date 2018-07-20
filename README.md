@@ -1,8 +1,18 @@
 # Purpose
 
-Sample project
+Sample project written in .net
 
-# local
+# Running contract tests
+
+It's enough for you to run `./scripts/runAcceptanceTests.sh` to
+
+- Build a docker image with Artifactory (normally you would have that running / you could also use Git instead)
+- We run the app on port `5000` in the `ContractTests` mode
+- We run the Spring Cloud Contract docker image that has the `contracts` folder mounted with contracts
+- From the mounted folder tests are generated against the running application
+- Once the tests have passed stubs are generated and uploaded to Artifactory
+
+# Running the app locally
 
 ## Pre-requisites
 
