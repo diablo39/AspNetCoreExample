@@ -34,3 +34,31 @@ From command line execute `dotnet run`
 
 http://localhost/swagger - swagger ui
 http://localhost/api-docs - redoc
+
+
+# Pipelines
+
+## Publish application
+
+Publish process produces binaries of the application
+
+```
+dotnet restore
+
+dotnet publich -c Release
+```
+
+Default output dir for this application: `src/AspNetCoreExample/bin/Release/netcoreapp2.1/publish`
+
+## Application name
+
+### For unpublished application
+
+Beeing in project directory
+`dotnet run --no-launch-profile appName`
+
+### For published application
+
+Beeing in publish directory
+
+`dotnet .\AspNetCoreExample.dll appName`
