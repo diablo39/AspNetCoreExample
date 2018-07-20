@@ -9,10 +9,10 @@ namespace AspNetCoreExample.Services
     public class CustomerServiceStub: ICustomerService
     {
         private static List<Customer> _customers = new List<Customer> {
-                new Customer{ FirstName = "Stub", LastName="Kowalski"},
-                new Customer{ FirstName = "Stub", LastName="Pawlak"},
-                new Customer{ FirstName = "Stub", LastName="Nowak"},
-                new Customer{ FirstName = "Stub", LastName="Malinowski"}
+                new Customer{ FirstName = "Stub1", LastName="Kowalski"},
+                new Customer{ FirstName = "Stub2", LastName="Pawlak"},
+                new Customer{ FirstName = "Stub3", LastName="Nowak"},
+                new Customer{ FirstName = "Stub4", LastName="Malinowski"}
             };
 
         public IList<Customer> GetCustomers()

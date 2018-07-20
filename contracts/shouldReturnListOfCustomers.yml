@@ -4,21 +4,21 @@ request:
   method: GET
   url: /api/Customers
   headers:
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
 response:
   status: 200
   headers:
-    Content-Type: application/json
+    Content-Type: application/json; charset=utf-8
   body: '[{
-    "FirstName" : "Jan",
-    "LastName" : "Kowalski"
+    "firstName" : "Stub1",
+    "lastName" : "Kowalski"
   },{
-    "FirstName" : "Zbigniew",
-    "LastName" : "Kowalski"
+    "firstName" : "Stub2",
+    "lastName" : "Kowalski"
   },{
-    "FirstName" : "Jan",
-    "LastName" : "Nowak"
+    "firstName" : "Stub3",
+    "lastName" : "Nowak"
   },{
-    "FirstName" : "Grażyna",
-    "LastName" : "Nowak"
+    "firstName" : "Stub4",
+    "lastName" : "Nowak"
   }]'
