@@ -55,5 +55,8 @@
 
   <Target Name="CFPPublish" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
     <Exec Command="dotnet publish -c Release" />
+    <Exec Command="echo $(ProjectDir)$(OutputPath)" />
+    <Exec Command="powershell Compress-Archive $(ProjectDir)$(OutputPath)\publish\* $(ProjectDir)$(OutputPath)\publish\publish.zip -Force" Condition="$([MSBuild]::IsOsPlatform(Windows))"/>
+    <Exec Command="zip -r $(ProjectDir)$(OutputPath)/publish/publish.zip $(ProjectDir)$(OutputPath)/publish/" Condition="$([MSBuild]::IsOsPlatform(Linux))"/>
   </Target>
 </Project>
