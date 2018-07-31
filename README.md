@@ -38,27 +38,29 @@ http://localhost/api-docs - redoc
 
 # Pipelines
 
-## Publish application
+Section describes commands that will be used by Cloud Foundry pipelines.
 
-Publish process produces binaries of the application
-
-```
-dotnet restore
-
-dotnet publich -c Release
-```
-
-Default output dir for this application: `src/AspNetCoreExample/bin/Release/netcoreapp2.1/publish`
+<b>Warning:<b> Output from below commands start with extra spaces in each line. Please make `left trim` 
 
 ## Application name
 
-### For unpublished application
+`dotnet msbuild /nologo /t:cfpappname`
 
-Beeing in project directory
-`dotnet run --no-launch-profile appName`
+## Application version
 
-### For published application
+`dotnet msbuild /nologo /t:cfpversion`
 
-Beeing in publish directory
+## Application GroupId
 
-`dotnet .\AspNetCoreExample.dll appName`
+`dotnet msbuild /nologo /t:cfpgroupid`
+
+## Application ArtifactId
+
+`dotnet msbuild /nologo /t:cfpartifactid`
+
+## Run UnitTests
+
+`dotnet msbuild /nologo /t:CFPUnitTests`
+
+## Publish
+

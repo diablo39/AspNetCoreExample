@@ -1,0 +1,59 @@
+﻿<Project>
+  <PropertyGroup>
+    <CFPMainProject>src\AspNetCoreExample</CFPMainProject>
+    <CFPApplicationName>$(Product)</CFPApplicationName>
+    <CFPVersion>$(Version)</CFPVersion>
+    <CFPArtifactId>$(AssemblyName)</CFPArtifactId>
+    <CFPGroupId>$(AssemblyName)</CFPGroupId>
+
+  </PropertyGroup>
+  <ItemGroup>
+    <UnitTest Include="test\UnitTests" />
+
+    
+    <!--<SmokeTest></SmokeTest>
+    <IntegrationTest></IntegrationTest>-->
+  </ItemGroup>
+
+  <PropertyGroup>
+    <_CFPMainProjectFullPath>$([MSBuild]::NormalizeDirectory($(SolutionDir)\$(CFPMainProject)))</_CFPMainProjectFullPath>
+    <!-- Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)" -->
+  </PropertyGroup>
+
+  <Target Name="CFPAppName" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(CFPApplicationName)"/>
+  </Target>
+
+  <Target Name="CFPVersion" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(CFPVersion)"/>
+  </Target>
+
+  <Target Name="CFPArtifactId" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(CFPArtifactId)"/>
+  </Target>
+
+  <Target Name="CFPGroupId" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(CFPGroupId)"/>
+  </Target>
+
+  <Target Name="CFPUnitTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <!-- run unit and integration tests -->
+    <Exec Command="dotnet test $(SolutionDir)\%(UnitTest.Identity)" Condition="%(UnitTest.Identity) != ''"/>
+  </Target>
+
+  <Target Name="CFPIntegrationTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <!-- run unit and integration tests -->
+  </Target>
+
+  <Target Name="CFPApiCompatibilityTest" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <!-- run contract tests -->
+  </Target>
+
+  <Target Name="CFPSmokeTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(SolutionDir)" />
+  </Target>
+
+  <Target Name="CFPPublish" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="dotnet publish -c Release" />
+  </Target>
+</Project>
