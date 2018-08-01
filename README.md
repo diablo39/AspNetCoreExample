@@ -64,3 +64,4 @@ Section describes commands that will be used by Cloud Foundry pipelines.
 
 ## Publish
 
+`dotnet msbuild /nologo /t:CFPPublish /p:Configuration=Release`
