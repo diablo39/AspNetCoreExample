@@ -59,6 +59,7 @@
     <Exec Command="powershell Compress-Archive $(ProjectDir)$(OutputPath)\publish\* $(ProjectDir)$(OutputPath)\publish\publish.zip -Force" Condition="$([MSBuild]::IsOsPlatform(Windows))"/>
     <!-- Linux publish -->
     <Exec Command="zip publish.zip ./*" WorkingDirectory="$(ProjectDir)$(OutputPath)/publish" Condition="$([MSBuild]::IsOsPlatform(Linux))"  />
-    <Exec Command='curl -u "$(M2_SETTINGS_REPO_USERNAME):$(M2_SETTINGS_REPO_PASSWORD)" -X PUT "$(REPO_WITH_BINARIES_FOR_UPLOAD)/$(CFPGroupId)/$(CFPApplicationName)/$(PIPELINE_VERSION)/$(CFPArtifactId)" --upload-file "publish.zip" --fail' Condition="$([MSBuild]::IsOsPlatform(Linux))" />
+    <Exec Command='echo Trying to upload file: $(ProjectDir)$(OutputPath)/publish/publish.zip to location: $(REPO_WITH_BINARIES_FOR_UPLOAD)/$(CFPGroupId)/$(CFPApplicationName)/$(PIPELINE_VERSION)/$(CFPApplicationName)-$(PIPELINE_VERSION).zip' Condition="$([MSBuild]::IsOsPlatform(Linux))" />
+    <Exec Command='curl -u "$(M2_SETTINGS_REPO_USERNAME):$(M2_SETTINGS_REPO_PASSWORD)" -X PUT "$(REPO_WITH_BINARIES_FOR_UPLOAD)/$(CFPGroupId)/$(CFPApplicationName)/$(PIPELINE_VERSION)/$(CFPApplicationName)-$(PIPELINE_VERSION).zip" --upload-file "publish.zip" --fail'  WorkingDirectory="$(ProjectDir)$(OutputPath)/publish" Condition="$([MSBuild]::IsOsPlatform(Linux))" />
   </Target>
 </Project>
