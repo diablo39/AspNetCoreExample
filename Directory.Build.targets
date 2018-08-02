@@ -50,11 +50,11 @@
   </Target>
 
   <Target Name="CFPIntegrationTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
-    <!-- run unit and integration tests -->
+    <Exec Command="./run_tests.sh"/>
   </Target>
 
   <Target Name="CFPApiCompatibilityTest" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
-    <!-- run contract tests -->
+    <Exec Command="./run_tests.sh"/>
   </Target>
 
   <Target Name="CFPSmokeTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
