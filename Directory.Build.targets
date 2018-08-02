@@ -1,16 +1,20 @@
 ﻿<Project>
   <PropertyGroup>
     <CFPMainProject>src\AspNetCoreExample</CFPMainProject>
-    <CFPApplicationName>$(Product)</CFPApplicationName>
+    <CFPApplicationName>$(AssemblyName)</CFPApplicationName>
     <CFPVersion>$(Version)</CFPVersion>
     <CFPArtifactId>$(AssemblyName)</CFPArtifactId>
+    <!-- We need to package it somewhere in Artifactory / Nexus -->
     <CFPGroupId>$(AssemblyName)</CFPGroupId>
+    <!-- group.id.with.dots:artifactid:version:classifier:port -->
+    <!-- com.example:foo:1.0.0:stubs:10000 -->
+    <CFPStubIds></CFPStubIds>
 
   </PropertyGroup>
   <ItemGroup>
     <UnitTest Include="test\UnitTests" />
 
-    
+
     <!--<SmokeTest></SmokeTest>
     <IntegrationTest></IntegrationTest>-->
   </ItemGroup>
@@ -36,6 +40,10 @@
     <Exec Command="echo $(CFPGroupId)"/>
   </Target>
 
+  <Target Name="CFPStubIds" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(CFPStubIds)"/>
+  </Target>
+
   <Target Name="CFPUnitTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
     <!-- run unit and integration tests -->
     <Exec Command="dotnet test $(SolutionDir)\%(UnitTest.Identity)" Condition="%(UnitTest.Identity) != ''"/>
@@ -50,6 +58,10 @@
   </Target>
 
   <Target Name="CFPSmokeTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
+    <Exec Command="echo $(SolutionDir)" />
+  </Target>
+
+  <Target Name="CFPE2eTests" Condition="$(_CFPMainProjectFullPath) == $(ProjectDir)">
     <Exec Command="echo $(SolutionDir)" />
   </Target>
 

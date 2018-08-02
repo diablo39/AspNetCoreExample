@@ -50,28 +50,28 @@ http://localhost/api-docs - redoc
 
 Section describes commands that will be used by Cloud Foundry pipelines.
 
-<b>Warning:<b> Output from below commands start with extra spaces in each line. Please make `left trim` 
+<b>Warning:<b> Output from below commands start with extra spaces in each line. Please make `left trim` (you can do it by piping to `xargs`)
+
+e.g.
 
 ## Application name
 
-`dotnet msbuild /nologo /t:cfpappname`
+`dotnet msbuild /nologo /t:cfpappname | xargs`
 
 ## Application version
 
-`dotnet msbuild /nologo /t:cfpversion`
+`dotnet msbuild /nologo /t:cfpversion | xargs`
 
 ## Application GroupId
 
-`dotnet msbuild /nologo /t:cfpgroupid`
+`dotnet msbuild /nologo /t:cfpgroupid | xargs`
 
 ## Application ArtifactId
 
-`dotnet msbuild /nologo /t:cfpartifactid`
+`dotnet msbuild /nologo /t:cfpartifactid | xargs`
 
 ## Run UnitTests
 
 `dotnet msbuild /nologo /t:CFPUnitTests`
 
 ## Publish
-
-`dotnet msbuild /nologo /t:CFPPublish /p:Configuration=Release`
