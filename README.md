@@ -72,6 +72,16 @@ e.g.
 
 ## Run UnitTests
 
-`dotnet msbuild /nologo /t:CFPUnitTests`
+`dotnet msbuild /nologo /t:CFPUnitTests | xargs`
+
+## Run End 2 end tests
+
+`dotnet msbuild /nologo /t:CFPE2eTests | xargs`
+
+## Run Smoke Tests
+
+`dotnet msbuild /nologo /t:CFPSmokeTests | xargs`
 
 ## Publish
+
+`dotnet msbuild /nologo /t:CFPPublish /p:Configuration=Release`

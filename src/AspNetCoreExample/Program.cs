@@ -22,7 +22,14 @@ namespace AspNetCoreExample
         {
             var result = WebHost.CreateDefaultBuilder(args)
                   .UseStartup(Assembly.GetEntryAssembly().FullName);
+            
+            var port = Environment.GetEnvironmentVariable("PORT");
 
+            if(!string.IsNullOrWhiteSpace(port))
+            {
+                result.UseUrls($"http://+:{ port }");
+            }
+            
             return result;
         }
     }
